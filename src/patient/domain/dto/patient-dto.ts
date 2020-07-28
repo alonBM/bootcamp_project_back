@@ -1,7 +1,8 @@
 import { UserType, Gender, Address } from '../../../common/user-types.interface';
-import { Document } from 'mongoose';
+import { InsuranceCompany } from '../models/patient.interface'
 
-export interface Professional extends Document {
+export class PatientDto {
+    _id: string;
     name: string;
     firstSurname: string;
     secondSurname: string;
@@ -10,9 +11,6 @@ export interface Professional extends Document {
     nif: string;
     address: Address;
     userType: UserType;
-    medicalBoardNumber: string;
-    professionalType: ProfessionalType;
+    nhc: string;
+    InsuranceList: InsuranceCompany[]
 }
-
-export type ProfessionalType = 'Doctor' | 'Nurse' | 'Administrator';
-

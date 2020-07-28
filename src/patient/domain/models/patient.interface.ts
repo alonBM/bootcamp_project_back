@@ -1,6 +1,7 @@
 import { UserType, Gender, Address } from '../../../common/user-types.interface';
+import { Document } from 'mongoose';
 
-export interface Patient {
+export interface Patient extends Document{
     name: string;
     firstSurname: string;
     secondSurname: string;

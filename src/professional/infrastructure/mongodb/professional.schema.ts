@@ -1,6 +1,6 @@
 import * as mongoose from 'mongoose';
 
-export const patientSchema = new mongoose.Schema({
+export const professionalSchema = new mongoose.Schema({
     name: String,
     firstSurname: String,
     secondSurname: String,
@@ -15,6 +15,6 @@ export const patientSchema = new mongoose.Schema({
         postalCode: String,
         city: String,
     },
-    nhc: String,
-    insuranceList: Array
+    medicalBoardNumber: String,
+    professionalType: String
 })
