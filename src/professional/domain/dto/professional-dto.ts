@@ -1,4 +1,4 @@
-import { UserType, Gender, Address } from '../../../common/user-types.interface';
+import { UserType, Gender, Address } from '../../../common/interfaces/user-types.interface';
 import { ProfessionalType } from '../models/professional.interface'
 
 export class ProfessionalDto {

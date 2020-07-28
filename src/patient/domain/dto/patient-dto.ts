@@ -1,4 +1,4 @@
-import { UserType, Gender, Address } from '../../../common/user-types.interface';
+import { UserType, Gender, Address } from '../../../common/interfaces/user-types.interface';
 import { InsuranceCompany } from '../models/patient.interface'
 
 export class PatientDto {
