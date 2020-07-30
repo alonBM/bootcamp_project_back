@@ -12,7 +12,7 @@ export class UserController {
 
     @Post()
     registerUser(
-        @Body() registerUserDto: RegisterUserDto) {
+        @Body() registerUserDto: RegisterUserDto): Promise<void> {
         let data = this.userService.registerUser(registerUserDto);
         Logger.log(data);
         return data;
@@ -23,13 +23,5 @@ export class UserController {
     getAllUsers() {
         return this.userService.getAllUsers();
     }
-
-    @Get('/guard')
-    @UseGuards(AuthGuard())
-    getGuardUser(@Req() req: Request) {
-        Logger.log(JSON.stringify(req['user']));
-        return "Entra";
-    }
-
 
 }

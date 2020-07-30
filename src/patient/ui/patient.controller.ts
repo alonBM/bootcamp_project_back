@@ -1,9 +1,11 @@
-import { Controller, Get, Param, Delete, Post, Body, Put } from '@nestjs/common';
+import { Controller, Get, Param, Delete, Post, Body, Put, UseGuards } from '@nestjs/common';
 import { Patient } from '../domain/models/patient.interface';
 import { PatientService } from '../app/service/patient.service';
 import { PatientDto } from '../domain/dto/patient-dto';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('patients')
+@UseGuards(AuthGuard())
 export class PatientController {
     constructor(private patientService: PatientService) { }
 

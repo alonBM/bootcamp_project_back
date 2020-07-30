@@ -1,10 +1,12 @@
 
-import { Controller, Get, Param, Delete, Post, Body, Put } from '@nestjs/common';
+import { Controller, Get, Param, Delete, Post, Body, Put, UseGuards } from '@nestjs/common';
 import { Professional } from '../domain/models/professional.interface';
 import { ProfessionalService } from '../app/service/professional.service';
 import { ProfessionalDto } from '../domain/dto/professional-dto';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('professionals')
+@UseGuards(AuthGuard())
 export class ProfessionalController {
     constructor(private professionalService: ProfessionalService) { }
 

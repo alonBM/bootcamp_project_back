@@ -4,13 +4,15 @@ import { UserService } from 'src/users/app/service/user.service';
 import { JwtPayLoad } from '../../domain/dto/payload-dto';
 import { JwtService } from '@nestjs/jwt';
 import *  as  bcrypt from 'bcrypt';
+import { LoginResponse } from 'src/auth/domain/dto/login-response-dto';
+import { User } from 'src/users/domain/models/user.interface';
 
 @Injectable()
 export class AuthService {
 
     constructor(private userService: UserService, private jwtService: JwtService) { };
 
-    async login(loginUserDto: LoginUserDto) {
+    async login(loginUserDto: LoginUserDto): Promise<LoginResponse> {
         let result = await this.userService.findByEmail(loginUserDto.email);
         if (!result) throw new NotFoundException();
         let checkPass = await bcrypt.compare(loginUserDto.password, result.password);
@@ -18,14 +20,14 @@ export class AuthService {
         return this.createJwtPayload(result);
     }
 
-    createJwtPayload(user): object {
+    createJwtPayload(user): LoginResponse {
         let data = {
             email: user.email,
             id: user._id
         }
         let jwt = this.jwtService.sign(data);
         return {
-            expiresIn: 3600,
+            expiresIn: '10s',
             token: jwt
         }
     }

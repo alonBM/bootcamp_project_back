@@ -48,6 +48,7 @@ export class ExceptionsFilter extends BaseExceptionFilter {
       status,
       success: false,
       error: message,
+      message: 'Something went wrong'
     });
   }
 }
