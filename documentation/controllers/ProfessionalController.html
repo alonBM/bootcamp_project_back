@@ -142,8 +142,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="27"
-                            class="link-to-prism">src/professional/ui/professional.controller.ts:27</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="29"
+                            class="link-to-prism">src/professional/ui/professional.controller.ts:29</a></div>
                 </td>
             </tr>
 
@@ -219,8 +219,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="22"
-                            class="link-to-prism">src/professional/ui/professional.controller.ts:22</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="24"
+                            class="link-to-prism">src/professional/ui/professional.controller.ts:24</a></div>
                 </td>
             </tr>
 
@@ -296,8 +296,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="12"
-                            class="link-to-prism">src/professional/ui/professional.controller.ts:12</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="14"
+                            class="link-to-prism">src/professional/ui/professional.controller.ts:14</a></div>
                 </td>
             </tr>
 
@@ -342,8 +342,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="17"
-                            class="link-to-prism">src/professional/ui/professional.controller.ts:17</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="19"
+                            class="link-to-prism">src/professional/ui/professional.controller.ts:19</a></div>
                 </td>
             </tr>
 
@@ -419,8 +419,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="34"
-                            class="link-to-prism">src/professional/ui/professional.controller.ts:34</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="36"
+                            class="link-to-prism">src/professional/ui/professional.controller.ts:36</a></div>
                 </td>
             </tr>
 
@@ -484,12 +484,14 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">
-import { Controller, Get, Param, Delete, Post, Body, Put } from &#x27;@nestjs/common&#x27;;
+import { Controller, Get, Param, Delete, Post, Body, Put, UseGuards } from &#x27;@nestjs/common&#x27;;
 import { Professional } from &#x27;../domain/models/professional.interface&#x27;;
 import { ProfessionalService } from &#x27;../app/service/professional.service&#x27;;
 import { ProfessionalDto } from &#x27;../domain/dto/professional-dto&#x27;;
+import { AuthGuard } from &#x27;@nestjs/passport&#x27;;
 
 @Controller(&#x27;professionals&#x27;)
+@UseGuards(AuthGuard())
 export class ProfessionalController {
     constructor(private professionalService: ProfessionalService) { }
 

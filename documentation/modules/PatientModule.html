@@ -156,10 +156,13 @@ import { PatientController } from &#x27;./ui/patient.controller&#x27;;
 import { PatientService } from &#x27;./app/service/patient.service&#x27;;
 import { MongooseModule } from &#x27;@nestjs/mongoose&#x27;;
 import { patientSchema } from &#x27;./infrastructure/mongodb/patient.schema&#x27;
+import { PassportModule } from &#x27;@nestjs/passport&#x27;;
 
 
 @Module({
-  imports:[MongooseModule.forFeature([{name: &#x27;Patient&#x27;, schema: patientSchema}])] ,
+  imports: [
+    PassportModule.register({ defaultStrategy: &#x27;jwt&#x27;, session: false }),
+    MongooseModule.forFeature([{ name: &#x27;Patient&#x27;, schema: patientSchema }])],
   controllers: [PatientController],
   providers: [PatientService]
 })

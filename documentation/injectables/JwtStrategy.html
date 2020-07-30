@@ -27,7 +27,7 @@
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
-               <div class="content class">
+               <div class="content injectable">
                    <div class="content-data">
 
 
@@ -36,13 +36,9 @@
 
 
 
-
-
-
-
 <ol class="breadcrumb">
-  <li>Classes</li>
-  <li>ExceptionsFilter</li>
+  <li>Injectables</li>
+  <li>JwtStrategy</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -60,16 +56,9 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/common/exceptions-filter/exceptions-filter.ts</code>
+            <code>src/auth/app/strategies/jwt.strategy.ts</code>
         </p>
 
-
-            <p class="comment">
-                <h3>Extends</h3>
-            </p>
-            <p class="comment">
-                    <code>BaseExceptionFilter</code>
-            </p>
 
 
 
@@ -87,7 +76,8 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#catch">catch</a>
+                                    <span class="modifier">Async</span>
+                                <a href="#validate">validate</a>
                             </li>
                         </ul>
                     </td>
@@ -101,7 +91,54 @@
     </table>
 </section>
 
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(authService: <a href="../injectables/AuthService.html">AuthService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/auth/app/strategies/jwt.strategy.ts:10</a></div>
+                            </td>
+                        </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>authService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AuthService.html" target="_self" >AuthService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
 
             <section>
     
@@ -112,26 +149,28 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="catch"></a>
+                    <a name="validate"></a>
                     <span class="name">
                         <b>
-                            catch
+                            <span class="modifier">Async</span>
+                            validate
                         </b>
-                        <a href="#catch"><span class="icon ion-ios-link"></span></a>
+                        <a href="#validate"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>catch(exception: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, host: ArgumentsHost)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>validate(payload: <a href="../interfaces/JwtPayLoad.html">JwtPayLoad</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="6"
-                            class="link-to-prism">src/common/exceptions-filter/exceptions-filter.ts:6</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="20"
+                            class="link-to-prism">src/auth/app/strategies/jwt.strategy.ts:20</a></div>
                 </td>
             </tr>
 
@@ -151,21 +190,9 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>exception</td>
+                                    <td>payload</td>
                                     <td>
-                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                                <tr>
-                                    <td>host</td>
-                                    <td>
-                                            <code>ArgumentsHost</code>
+                                                <code><a href="../interfaces/JwtPayLoad.html" target="_self" >JwtPayLoad</a></code>
                                     </td>
 
                                     <td>
@@ -180,7 +207,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+                        <b>Returns : </b>    <code>{}</code>
 
                     </div>
                     <div class="io-description">
@@ -192,71 +219,45 @@
     </table>
 </section>
 
-
-
-
-
     </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Catch, ArgumentsHost, HttpStatus, Logger } from &#x27;@nestjs/common&#x27;;
-import { BaseExceptionFilter } from &#x27;@nestjs/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable, UnauthorizedException, Logger } from &#x27;@nestjs/common&#x27;;
+import { PassportStrategy } from &quot;@nestjs/passport&quot;;
+import { Strategy, ExtractJwt } from &#x27;passport-jwt&#x27;;
+import { AuthService } from &#x27;../service/auth.service&#x27;;
+import { JwtPayLoad } from &#x27;../../../auth/domain/dto/payload-dto&#x27;;
 
-@Catch()
-export class ExceptionsFilter extends BaseExceptionFilter {
-  catch(exception: any, host: ArgumentsHost) {
-    Logger.error(&#x27;Exception thrown: &#x27;, exception);
 
-    const response &#x3D; host.switchToHttp().getResponse();
+@Injectable()
+export class JwtStrategy extends PassportStrategy(Strategy) {
 
-    const message &#x3D;
-      exception instanceof Error ? exception.message : exception.message.error;
-
-    let status &#x3D; HttpStatus.INTERNAL_SERVER_ERROR;
-
-    if (exception.status &#x3D;&#x3D;&#x3D; HttpStatus.BAD_GATEWAY) {
-      status &#x3D; HttpStatus.BAD_GATEWAY;
-    }
-    if (exception.status &#x3D;&#x3D;&#x3D; HttpStatus.BAD_REQUEST) {
-      status &#x3D; HttpStatus.BAD_REQUEST;
-    }
-    if (exception.status &#x3D;&#x3D;&#x3D; HttpStatus.CONFLICT) {
-      status &#x3D; HttpStatus.CONFLICT;
-    }
-    if (exception.status &#x3D;&#x3D;&#x3D; HttpStatus.EXPECTATION_FAILED) {
-      status &#x3D; HttpStatus.EXPECTATION_FAILED;
-    }
-    if (exception.status &#x3D;&#x3D;&#x3D; HttpStatus.FORBIDDEN) {
-      status &#x3D; HttpStatus.FORBIDDEN;
-    }
-    if (exception.status &#x3D;&#x3D;&#x3D; HttpStatus.NOT_ACCEPTABLE) {
-      status &#x3D; HttpStatus.NOT_ACCEPTABLE;
-    }
-    if (exception.status &#x3D;&#x3D;&#x3D; HttpStatus.NOT_FOUND) {
-      status &#x3D; HttpStatus.NOT_FOUND;
-    }
-    if (exception.status &#x3D;&#x3D;&#x3D; HttpStatus.REQUEST_TIMEOUT) {
-      status &#x3D; HttpStatus.REQUEST_TIMEOUT;
-    }
-    if (exception.status &#x3D;&#x3D;&#x3D; HttpStatus.SERVICE_UNAVAILABLE) {
-      status &#x3D; HttpStatus.SERVICE_UNAVAILABLE;
-    }
-    if (exception.status &#x3D;&#x3D;&#x3D; HttpStatus.UNAUTHORIZED) {
-      status &#x3D; HttpStatus.UNAUTHORIZED;
+    constructor(private authService: AuthService) {
+        super({
+            jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+            secretOrKey: &#x27;estaesmiphrassecreate&#x27;
+        })
+        Logger.log(&quot;Creando el jwtStrategy&quot;);
     }
 
-    response.status(status).json({
-      status,
-      success: false,
-      error: message,
-      message: &#x27;Something went wrong&#x27;
-    });
-  }
-}
-</code></pre>
+    async validate(payload: JwtPayLoad) {
+        Logger.log(&quot;Entrando a Validate&quot;);
+
+        const user &#x3D; await this.authService.validateUserByJwt(payload);
+        if (!user) throw new UnauthorizedException();
+        return user;
+
+    }
+
+}</code></pre>
     </div>
+
 </div>
+
+
+
+
 
 
 
@@ -281,8 +282,8 @@ export class ExceptionsFilter extends BaseExceptionFilter {
 
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
-            var COMPODOC_CURRENT_PAGE_URL = 'ExceptionsFilter.html';
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'JwtStrategy.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

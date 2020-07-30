@@ -34,7 +34,7 @@
 
 <ol class="breadcrumb">
     <li>Modules</li>
-    <li>ProfessionalModule</li>
+    <li>AuthModule</li>
 </ol>
 
 <div class="text-center module-graph-container">
@@ -62,30 +62,58 @@
 <polygon fill="#fb8072" stroke="transparent" points="406,-10 406,-30 426,-30 426,-10 406,-10"/>
 <text text-anchor="start" x="429.7258" y="-15.4" font-family="sans-serif" font-size="14.00" fill="#000000"> &#160;Exports</text>
 <g id="clust1" class="cluster">
-<title>cluster_ProfessionalModule</title>
-<polygon fill="none" stroke="#000000" stroke-dasharray="1,5" points="144,-70 144,-195 352,-195 352,-70 144,-70"/>
+<title>cluster_AuthModule</title>
+<polygon fill="none" stroke="#000000" stroke-dasharray="1,5" points="49,-70 49,-195 447,-195 447,-70 49,-70"/>
+</g>
+<g id="clust3" class="cluster">
+<title>cluster_AuthModule_imports</title>
+<polygon fill="none" stroke="#000000" points="331,-78 331,-130 439,-130 439,-78 331,-78"/>
 </g>
 <g id="clust6" class="cluster">
-<title>cluster_ProfessionalModule_providers</title>
-<polygon fill="none" stroke="#000000" points="152,-78 152,-130 344,-130 344,-78 152,-78"/>
+<title>cluster_AuthModule_providers</title>
+<polygon fill="none" stroke="#000000" points="57,-78 57,-130 323,-130 323,-78 57,-78"/>
 </g>
-<!-- ProfessionalService -->
+<!-- UsersModule -->
 <g id="node1" class="node">
-<title>ProfessionalService</title>
-<ellipse fill="#fdb462" stroke="#000000" cx="248" cy="-104" rx="87.9549" ry="18"/>
-<text text-anchor="middle" x="248" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">ProfessionalService</text>
+<title>UsersModule</title>
+<polygon fill="#8dd3c7" stroke="#000000" points="430.9218,-122 427.9218,-126 406.9218,-126 403.9218,-122 339.0782,-122 339.0782,-86 430.9218,-86 430.9218,-122"/>
+<text text-anchor="middle" x="385" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">UsersModule</text>
 </g>
-<!-- ProfessionalModule -->
+<!-- AuthModule -->
 <g id="node2" class="node">
-<title>ProfessionalModule</title>
-<polygon fill="#8dd3c7" stroke="#000000" points="312.2534,-187 309.2534,-191 288.2534,-191 285.2534,-187 183.7466,-187 183.7466,-151 312.2534,-151 312.2534,-187"/>
-<text text-anchor="middle" x="248" y="-164.8" font-family="Times,serif" font-size="14.00" fill="#000000">ProfessionalModule</text>
+<title>AuthModule</title>
+<polygon fill="#8dd3c7" stroke="#000000" points="299.5482,-187 296.5482,-191 275.5482,-191 272.5482,-187 212.4518,-187 212.4518,-151 299.5482,-151 299.5482,-187"/>
+<text text-anchor="middle" x="256" y="-164.8" font-family="Times,serif" font-size="14.00" fill="#000000">AuthModule</text>
 </g>
-<!-- ProfessionalService&#45;&gt;ProfessionalModule -->
+<!-- UsersModule&#45;&gt;AuthModule -->
 <g id="edge1" class="edge">
-<title>ProfessionalService&#45;&gt;ProfessionalModule</title>
-<path fill="none" stroke="#000000" d="M248,-122.1061C248,-122.1061 248,-140.991 248,-140.991"/>
-<polygon fill="#000000" stroke="#000000" points="244.5001,-140.9909 248,-150.991 251.5001,-140.991 244.5001,-140.9909"/>
+<title>UsersModule&#45;&gt;AuthModule</title>
+<path fill="none" stroke="#000000" d="M385,-122.1061C385,-141.3391 385,-169 385,-169 385,-169 309.6735,-169 309.6735,-169"/>
+<polygon fill="#000000" stroke="#000000" points="309.6736,-165.5001 299.6735,-169 309.6735,-172.5001 309.6736,-165.5001"/>
+</g>
+<!-- AuthService -->
+<g id="node3" class="node">
+<title>AuthService</title>
+<ellipse fill="#fdb462" stroke="#000000" cx="256" cy="-104" rx="59.1083" ry="18"/>
+<text text-anchor="middle" x="256" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">AuthService</text>
+</g>
+<!-- AuthService&#45;&gt;AuthModule -->
+<g id="edge2" class="edge">
+<title>AuthService&#45;&gt;AuthModule</title>
+<path fill="none" stroke="#000000" d="M256,-122.1061C256,-122.1061 256,-140.991 256,-140.991"/>
+<polygon fill="#000000" stroke="#000000" points="252.5001,-140.9909 256,-150.991 259.5001,-140.991 252.5001,-140.9909"/>
+</g>
+<!-- JwtStrategy -->
+<g id="node4" class="node">
+<title>JwtStrategy</title>
+<ellipse fill="#fdb462" stroke="#000000" cx="122" cy="-104" rx="56.7561" ry="18"/>
+<text text-anchor="middle" x="122" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">JwtStrategy</text>
+</g>
+<!-- JwtStrategy&#45;&gt;AuthModule -->
+<g id="edge3" class="edge">
+<title>JwtStrategy&#45;&gt;AuthModule</title>
+<path fill="none" stroke="#000000" d="M122,-122.1061C122,-141.3391 122,-169 122,-169 122,-169 202.1234,-169 202.1234,-169"/>
+<polygon fill="#000000" stroke="#000000" points="202.1234,-172.5001 212.1234,-169 202.1234,-165.5001 202.1234,-172.5001"/>
 </g>
 </g>
 </svg>
@@ -117,7 +145,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/professional/professional.module.ts</code>
+            <code>src/auth/auth.module.ts</code>
         </p>
 
 
@@ -130,7 +158,10 @@
                             title="Official documentation about module providers"><span class="icon ion-ios-information-circle-outline"></a></h3>
                     <ul class="list-group">
                         <li class="list-group-item">
-                            <a href="../injectables/ProfessionalService.html">ProfessionalService</a>
+                            <a href="../injectables/AuthService.html">AuthService</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="../injectables/JwtStrategy.html">JwtStrategy</a>
                         </li>
                     </ul>
                 </div>
@@ -139,7 +170,16 @@
                                 class="icon ion-ios-information-circle-outline"></a></h3>
                     <ul class="list-group">
                         <li class="list-group-item">
-                            <a href="../controllers/ProfessionalController.html">ProfessionalController</a>
+                            <a href="../controllers/AuthController.html">AuthController</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm-3">
+                    <h3>Imports<a href="https://angular.io/api/core/NgModule#imports" target="_blank" title="Official documentation about module imports"><span
+                                class="icon ion-ios-information-circle-outline"></a></h3>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <a href="../modules/UsersModule.html">UsersModule</a>
                         </li>
                     </ul>
                 </div>
@@ -152,19 +192,29 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Module } from &#x27;@nestjs/common&#x27;;
-import { ProfessionalController } from &#x27;./ui/professional.controller&#x27;;
-import { ProfessionalService } from &#x27;./app/service/professional.service&#x27;;
-import { MongooseModule } from &#x27;@nestjs/mongoose&#x27;;
-import { professionalSchema } from &#x27;./infrastructure/mongodb/professional.schema&#x27;
+import { AuthService } from &#x27;./app/service/auth.service&#x27;;
+import { AuthController } from &#x27;./ui/auth.controller&#x27;;
+import { UserService } from &#x27;src/users/app/service/user.service&#x27;;
 import { PassportModule } from &#x27;@nestjs/passport&#x27;;
+import { UsersModule } from &#x27;../users/users.module&#x27;;
+import { JwtModule } from &#x27;@nestjs/jwt&#x27;;
+import { JwtStrategy } from &#x27;./app/strategies/jwt.strategy&#x27;;
+
 @Module({
   imports: [
     PassportModule.register({ defaultStrategy: &#x27;jwt&#x27;, session: false }),
-    MongooseModule.forFeature([{ name: &#x27;Professional&#x27;, schema: professionalSchema }])],
-  controllers: [ProfessionalController],
-  providers: [ProfessionalService]
+    JwtModule.register({
+      secretOrPrivateKey: &#x27;estaesmiphrassecreate&#x27;,
+      signOptions: {
+        expiresIn: &#x27;10s&#x27;
+      }
+    }),
+    UsersModule],
+  providers: [AuthService, JwtStrategy],
+  controllers: [AuthController]
 })
-export class ProfessionalModule { }
+export class AuthModule { }
+
 </code></pre>
     </div>
 </div>
@@ -200,7 +250,7 @@ export class ProfessionalModule { }
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'module';
-            var COMPODOC_CURRENT_PAGE_URL = 'ProfessionalModule.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'AuthModule.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

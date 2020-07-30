@@ -142,8 +142,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="26"
-                            class="link-to-prism">src/patient/ui/patient.controller.ts:26</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="28"
+                            class="link-to-prism">src/patient/ui/patient.controller.ts:28</a></div>
                 </td>
             </tr>
 
@@ -219,8 +219,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="21"
-                            class="link-to-prism">src/patient/ui/patient.controller.ts:21</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="23"
+                            class="link-to-prism">src/patient/ui/patient.controller.ts:23</a></div>
                 </td>
             </tr>
 
@@ -296,8 +296,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="16"
-                            class="link-to-prism">src/patient/ui/patient.controller.ts:16</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="18"
+                            class="link-to-prism">src/patient/ui/patient.controller.ts:18</a></div>
                 </td>
             </tr>
 
@@ -373,8 +373,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="11"
-                            class="link-to-prism">src/patient/ui/patient.controller.ts:11</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="13"
+                            class="link-to-prism">src/patient/ui/patient.controller.ts:13</a></div>
                 </td>
             </tr>
 
@@ -419,8 +419,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="31"
-                            class="link-to-prism">src/patient/ui/patient.controller.ts:31</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="33"
+                            class="link-to-prism">src/patient/ui/patient.controller.ts:33</a></div>
                 </td>
             </tr>
 
@@ -483,12 +483,14 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Controller, Get, Param, Delete, Post, Body, Put } from &#x27;@nestjs/common&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Controller, Get, Param, Delete, Post, Body, Put, UseGuards } from &#x27;@nestjs/common&#x27;;
 import { Patient } from &#x27;../domain/models/patient.interface&#x27;;
 import { PatientService } from &#x27;../app/service/patient.service&#x27;;
 import { PatientDto } from &#x27;../domain/dto/patient-dto&#x27;;
+import { AuthGuard } from &#x27;@nestjs/passport&#x27;;
 
 @Controller(&#x27;patients&#x27;)
+@UseGuards(AuthGuard())
 export class PatientController {
     constructor(private patientService: PatientService) { }
 

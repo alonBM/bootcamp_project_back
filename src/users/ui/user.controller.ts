@@ -17,7 +17,7 @@ export class UserController {
         Logger.log(data);
         return data;
     }
-
+    
     @Get()
     @UseGuards(AuthGuard())
     getAllUsers() {
