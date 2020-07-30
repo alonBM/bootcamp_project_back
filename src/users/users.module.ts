@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { UserService } from './app/service/user.service';
 import { UserController } from './ui/user.controller';
 import { MongooseModule } from '@nestjs/mongoose';
-import { userSchema } from './infrastructure/Mongodb/user.schema';
+import { userSchema } from './infrastructure/mongodb/user.schema';
 import { PassportModule } from '@nestjs/passport';
 @Module({
   imports: [
